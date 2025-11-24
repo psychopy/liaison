@@ -16,6 +16,8 @@ class BaseLiaison:
             companion = Companion()
         # store ref to companion
         self.companion = companion
+        # store ref to self in companion
+        companion.namespace['liaison'] = self
         # array for messages
         self.messages = []
     

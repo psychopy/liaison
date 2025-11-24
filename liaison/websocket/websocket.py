@@ -44,6 +44,7 @@ class WebsocketLiaison(BaseLiaison):
         self.port = port
         # attribute to store websocket connection in
         self.com = None
+        self.server = None
         # create an asynchronous loop
         self.loop = asyncio.new_event_loop()
         # stores whether this liaison is active
@@ -51,6 +52,8 @@ class WebsocketLiaison(BaseLiaison):
     
     def start(self):
         async def process_messages(websocket):
+            # store websocket handle
+            self.com = websocket
             # start off alive
             self.alive = True
             # run until killed
@@ -106,7 +109,7 @@ class WebsocketLiaison(BaseLiaison):
             # create future
             future = self.loop.create_future()
             # await future to continuously serve
-            async with websockets.serve(process_messages, self.host, self.port, compression=None) as self.com:
+            async with websockets.serve(process_messages, self.host, self.port, compression=None) as self.server:
                 # post start message in stdout
                 sys.stdout.write(f"{START_MARKER}@{self.host}:{self.port}")
                 sys.stdout.flush()
@@ -124,7 +127,7 @@ class WebsocketLiaison(BaseLiaison):
     def stop(self):
         self.alive = False
     
-    def send(self, message):
+    def send(self, message, timeout=1):
         # make sure message is a JSON string
         if not isinstance(message, str):
             try:
@@ -159,14 +162,5 @@ def send_message(liaison, message, timeout=1):
     # make sure message is a JSON string
     if not isinstance(message, str):
         message = json.dumps(message, cls=LiaisonJSONEncoder)
-    # connect and send
-    with connect(f"ws://{liaison.host}:{liaison.port}") as com:
-        # send message
-        com.send(message)
-        # wait for a response
-        try:
-            resp = com.recv(timeout=timeout)
-        except TimeoutError:
-            return None
-    
-    return resp
+    # send
+    return liaison.send(message, timeout=timeout)

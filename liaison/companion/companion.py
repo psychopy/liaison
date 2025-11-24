@@ -14,7 +14,9 @@ class Companion:
 
     def __init__(self):
         # create a namespace to evaluate commands in
-        self.namespace = {}
+        self.namespace = {
+            'companion': self
+        }
         # store own methods as named commands
         self.commands = {
             'get': self.resolve,
