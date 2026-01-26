@@ -75,7 +75,7 @@ class WebsocketLiaison(BaseLiaison):
                     except Exception as err:
                         # send errors to the websocket
                         resp = {
-                            'error': traceback.format_exception(err),
+                            'error': traceback.format_exception(err, err, err.__traceback__),
                             'tag': "error",
                             'evt': message
                         }
@@ -89,13 +89,13 @@ class WebsocketLiaison(BaseLiaison):
                     await websocket.send(resp)
                 except json.JSONDecodeError as err:
                     # send error
-                    sys.stdout.write(traceback.format_exception(err))
+                    sys.stdout.write(traceback.format_exception(err, err, err.__traceback__))
                     sys.stsout.flush()
                     # store error as a message
                     self.messages.append(err)
                 except (websockets.ConnectionClosedOK, websockets.ConnectionClosedError) as err:
                     # send error
-                    sys.stdout.write(traceback.format_exception(err))
+                    sys.stdout.write(traceback.format_exception(err, err, err.__traceback__))
                     sys.stsout.flush()
                     # store end message / error as a message
                     self.messages.append(err)
@@ -104,7 +104,7 @@ class WebsocketLiaison(BaseLiaison):
                     # kill
                     self.stop()
                 except Exception as err:
-                    sys.stdout.write(traceback.format_exception(err))
+                    sys.stdout.write(traceback.format_exception(err, err, err.__traceback__))
                     sys.stsout.flush()
         
         async def run():
