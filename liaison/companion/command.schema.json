@@ -11,6 +11,7 @@
                 "get",
                 "init",
                 "run",
+                "try",
                 "register",
                 "store",
                 "ping"

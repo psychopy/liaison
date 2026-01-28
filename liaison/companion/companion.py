@@ -22,6 +22,7 @@ class Companion:
             'get': self.resolve,
             'init': self.initialize,
             'run': self.call,
+            'try': self.attempt,
             'register': self.register,
             'store': self.store,
             'ping': self.ping
@@ -146,6 +147,37 @@ class Companion:
             *[self.actualize(arg) for arg in args], 
             **{self.actualize(key): self.actualize(arg) for key, arg in kwargs.items()}
         )
+    
+    def attempt(self, fcn, *args, **kwargs):
+        """
+        Call a registered function within a try:except statement
+
+        Parameters
+        ----------
+        fcn : str
+            Resolvable path to the function
+        args : list
+            Arguments to call the function with - each will be passed to `.actualize` first
+        kwargs : dict
+            Keyword arguments to call the function with - each key and value will be passed to 
+            `.actualize` first
+
+        Returns
+        -------
+        dict{"success": bool, "result": any or Exception}
+            Output from the function, with both a boolean indicating succees and either the result
+            on success or the raised Exception on failure
+        """
+        try:
+            return {
+                'success': True,
+                'result': self.call(fcn, *args, **kwargs)
+            } 
+        except Exception as err:
+            return {
+                'success': False,
+                'result': err
+            }
 
     def register(self, name, target):
         """

@@ -28,6 +28,9 @@ class LiaisonJSONEncoder(json.JSONEncoder):
         # if given a class or method, construct an import string
         if isinstance(o, (type, types.FunctionType)):
             return f"python:///{o.__module__}:{o.__qualname__}"
+        # if given an error, format it with traceback
+        if isinstance(o, Exception):
+            return traceback.format_exception(o, o, o.__traceback__)
 
         # otherwise behave as normal
         try:
