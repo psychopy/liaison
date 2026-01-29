@@ -20,6 +20,7 @@ class Companion:
         # store own methods as named commands
         self.commands = {
             'get': self.resolve,
+            'exists': self.exists,
             'init': self.initialize,
             'run': self.call,
             'try': self.attempt,
@@ -94,6 +95,25 @@ class Companion:
             return eval(target, self.namespace)
         else:
             return self.resolve_import(target)
+    
+    def exists(self, target):
+        """
+        Check whether a target exists, either as a name in this Companion's namespace or as part of 
+        an installed Python module
+
+        Parameters
+        ----------
+        target : str
+            A valid Python import string or resolvable name
+        """
+        # try to resolve
+        try:
+            self.resolve(target)
+            # if resolvable, return True
+            return True
+        except:
+            # if this fails for any reason, return False
+            return False
     
     def initialize(self, name, cls, *args, **kwargs):
         """
