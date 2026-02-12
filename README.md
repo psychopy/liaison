@@ -1,6 +1,6 @@
 # Liaison Backend
 
-Liaison provides a syntax for interfacing with a Python backend by sending commands as JSON.
+Liaison provides a way of interfacing with a Python backend by sending commands as JSON.
 
 ## Getting started with Websocket Liaison
 

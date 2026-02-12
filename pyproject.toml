@@ -1,7 +1,7 @@
 [project]
 name = "liaison"
-version = "0.0.0"
-description = "Provides a syntax for interfacing with a Python backend by sending commands as JSON."
+version = "1.0.0"
+description = "Provides a way of interfacing with a Python backend by sending commands as JSON."
 readme = "README.md"
 authors = [
   {name = "Open Science Tools Ltd", email = "support@opensciencetools.org"},
