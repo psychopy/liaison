@@ -1,5 +1,5 @@
 [project]
-name = "liaison"
+name = "liaison-py"
 version = "1.0.0"
 description = "Provides a way of interfacing with a Python backend by sending commands as JSON."
 readme = "README.md"
