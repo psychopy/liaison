@@ -8,6 +8,8 @@ Liaison was built by [Open Science Tools Ltd.](https://opensciencetools.org/) to
 
 While Liaison is designed to allow support for other communication methods to be added in future, and could hypothetically support any method over which a JSON string can be sent, it presently only supports sending/receiving messages over websocket as this is the implementation it was built for.
 
+Liaison is not a generic data structure tool. It's a system for sending simple instructions to a Python instance and doing some basic namespace management. If you are interested in the exchange of serialised strcutured data, check out [Google's Protocol Buffers](https://protobuf.dev/) or [Cap'n Proto](https://capnproto.org/).
+
 ## Getting started with Websocket Liaison
 
 ### Installing
