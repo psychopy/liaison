@@ -179,7 +179,7 @@ let cmd = {
     command: {
         command: 'run',
         args: [
-            a, b
+            "scipy.stats:ttest_ind", a, b
         ],
         kwargs: {
             equal_var: false
