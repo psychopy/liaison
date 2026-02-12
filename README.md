@@ -2,9 +2,13 @@
 
 Liaison provides a way of interfacing with a Python backend by sending commands as JSON.
 
-## Getting started with Websocket Liaison
+## History
 
-While Liaison is built to be general, it presently only supports sending/receiving messages over websocket.
+Liaison was built by [Open Science Tools Ltd.](https://opensciencetools.org/) to provide an interface between the [PsychoPy Studio](https://github.com/psychopy/psychopy-studio) app (a frontend built in Electron/Svelte) and the [PsychoPy](https://github.com/psychopy/psychopy) Python library. Owing to the general usefulness of being able to interface with Python via JSON commands, we decided to release it as its own package, for general use. Liaison is distributed under an [MIT License](https://opensource.org/license/mit).
+
+While Liaison is designed to allow support for other communication methods to be added in future, and could hypothetically support any method over which a JSON string can be sent, it presently only supports sending/receiving messages over websocket as this is the implementation it was built for.
+
+## Getting started with Websocket Liaison
 
 ### Installing
 
@@ -212,7 +216,3 @@ liaisonSocket.addEventListener("message", lsnr)
 // get response
 let resp = await replied.promise
 ```
-
-## History
-
-Liaison was built by [Open Science Tools Ltd.](https://opensciencetools.org/) to provide an interface between the [PsychoPy Studio](https://github.com/psychopy/psychopy-studio) app and the [PsychoPy](https://github.com/psychopy/psychopy) Python library. Owing to the general usefulness of being able to interface with Python via JSON commands, we decided to release it as its own package, for general use. Liaison is distributed under an [MIT License](https://opensource.org/license/mit).
