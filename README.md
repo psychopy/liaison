@@ -1,4 +1,4 @@
-# Liaison Backend
+# Liaison
 
 Liaison provides a way of interfacing with a Python backend by sending commands as JSON.
 
