@@ -1,12 +1,23 @@
 [project]
 name = "liaison"
 version = "0.0.0"
+description = "Provides a syntax for interfacing with a Python backend by sending commands as JSON."
+readme = "README.md"
+authors = [
+  {name = "Open Science Tools Ltd", email = "support@opensciencetools.org"},
+]
+license = { text = "MIT" }
 
 dependencies = [
     "jsonschema"
 ]
 
 [project.optional-dependencies]
+# dependencies for running the test suite
+tests = [
+    "pytest"
+]
+# required to use liaison over websocket connections
 websocket = [
     "websockets"
 ]
