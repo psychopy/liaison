@@ -1,6 +1,6 @@
 [project]
 name = "liaison-py"
-version = "1.0.0"
+version = "1.0.1"
 description = "Provides a way of interfacing with a Python backend by sending commands as JSON."
 readme = "README.md"
 authors = [
