@@ -94,14 +94,14 @@ class WebsocketLiaison(BaseLiaison):
                     # send error
                     for line in traceback.format_exception(err, err, err.__traceback__):
                         sys.stdout.write(line)
-                    sys.stsout.flush()
+                    sys.stdout.flush()
                     # store error as a message
                     self.messages.append(err)
                 except (websockets.ConnectionClosedOK, websockets.ConnectionClosedError) as err:
                     # send error
                     for line in traceback.format_exception(err, err, err.__traceback__):
                         sys.stdout.write(line)
-                    sys.stsout.flush()
+                    sys.stdout.flush()
                     # store end message / error as a message
                     self.messages.append(err)
                     # clear ref to websocket
@@ -111,7 +111,7 @@ class WebsocketLiaison(BaseLiaison):
                 except Exception as err:
                     for line in traceback.format_exception(err, err, err.__traceback__):
                         sys.stdout.write(line)
-                    sys.stsout.flush()
+                    sys.stdout.flush()
         
         async def run():
             # create future
